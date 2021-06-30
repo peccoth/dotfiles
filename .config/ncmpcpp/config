@@ -1,0 +1,14 @@
+ncmpcpp_directory = ~/.config/ncmpcpp
+lyrics_directory  = ~/.config/ncmpcpp/lyrics
+mpd_music_dir     = ~/ssd/Muzyka
+
+execute_on_song_change = "sh ~/.config/ncmpcpp/notification"
+
+playlist_display_mode = columns
+song_columns_list_format = (50)[white]{t} (50)[green]{ar} 
+progressbar_look = ▂▂
+autocenter_mode = yes
+volume_change_step = 1
+titles_visibility = no
+header_visibility = no
+alternative_ui_separator_color = green

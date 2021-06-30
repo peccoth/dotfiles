@@ -1,0 +1,8 @@
+#!/bin/sh
+path=$XDG_MUSIC_DIR$(mpc -f %file% current)
+if [ -f "${path%/*}"/?over.* ]; then
+    notify-send -i "${path%/*}"/?over.* "Now playing: " "$(mpc current)"
+else
+    ffmpeg -i "$path" "${path%/*}/cover.jpg"
+    notify-send -i "${path%/*}/cover.jpg" "Now playing: " "$(mpc current)"
+fi
