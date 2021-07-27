@@ -1,5 +1,5 @@
 bindkey -v
-autoload -Uz compinit promptinit
+autoload -U compinit promptinit
 compinit && promptinit
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -9,11 +9,14 @@ prompt_theme_setup() {
 }
 prompt_themes+=( theme )
 prompt theme
-
-zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+# zstyle ':completion:*' menu select
 setopt COMPLETE_ALIASES
+setopt autocd 
 # aliases
+alias ls='ls --color'
 alias vim=nvim
 alias vi=nvim
 alias v=nvim
-alias dotfiles='git --git-dir=$HOME/.local/dotfiles --work-tree=$HOME'
+alias dotfiles='git --git-dir=$HOME/.local/dotfiles.git --work-tree=$HOME'
+alias feh='feh -.'
