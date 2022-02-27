@@ -1,8 +1,6 @@
 ncmpcpp_directory = ~/.config/ncmpcpp
 lyrics_directory  = ~/.config/ncmpcpp/lyrics
-mpd_music_dir     = ~/ssd/Muzyka
-
-execute_on_song_change = "sh ~/.config/ncmpcpp/notification"
+mpd_music_dir     = ~/Music
 
 playlist_display_mode = columns
 song_columns_list_format = (50)[white]{t} (50)[green]{ar} 
