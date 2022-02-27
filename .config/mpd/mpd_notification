@@ -1,0 +1,10 @@
+#!/bin/sh
+while true 
+do 
+    path=$XDG_MUSIC_DIR$(mpc -f %file% current)
+    if [ ! -f "${path%/*}"/?over.* ]; then
+        ffmpeg -i "$path" "${path%/*}/cover.jpg"
+    fi
+        notify-send -i "${path%/*}"/?over.* "Now playing: " "$(mpc current)" --hint=string:x-dunst-stack-tag:mpd_notification
+    mpc idle player > /dev/null
+done
