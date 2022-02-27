@@ -20,3 +20,4 @@ alias vi=nvim
 alias v=nvim
 alias dotfiles='git --git-dir=$HOME/.local/dotfiles.git --work-tree=$HOME'
 alias feh='feh -.'
+alias top=htop

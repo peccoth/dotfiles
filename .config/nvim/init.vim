@@ -32,7 +32,7 @@ nnoremap <leader>n :NERDTreeToggle<cr>
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 noremap <SPACE> <Nop>
-autocmd filetype cpp nnoremap <F6> :w <bar> :make <CR> :!./out <CR>
+autocmd filetype cpp nnoremap <F6> :w <bar> :!g++ -Wall -Wextra -std=c++17 -o %< % <cr>:!./%< <CR>
 autocmd filetype cpp nnoremap <F5> :w <bar> :!g++ -Wall -Wextra -std=c++17 -o %< % <cr>
 autocmd filetype ruby nnoremap <F5> :w <bar> :!ruby path_to_enlightenment.rb <cr>
 " COLORS

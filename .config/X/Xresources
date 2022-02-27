@@ -42,7 +42,7 @@ dwm.selfgcolor:      #fce8c3
 ! dwm.selfgcolor:      #121212
 
 dwm.statusfgcolor:   #121212
-dwm.statusbgcolor:   #98bc37
+dwm.statusbgcolor:   #918175
 !! DWM TERMINAL
 !dwm.foreground:   #fce8c3
 !! dwm.background:   #1c1b19
