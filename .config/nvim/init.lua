@@ -29,8 +29,10 @@ local map = vim.api.nvim_set_keymap
 vim.g.mapleader = ' '
 map('','<leader>n',':NERDTreeToggle<cr>',{noremap = true})
 map('','<leader>w','<C-w>w <cr>',{noremap = true})
+map('t','<ESC>','<C-\\><C-n>',{noremap = true})
 map('','<leader>a','ggVG',{noremap = true})
-map('','<leader>t',':split term://$SHELL <cr>',{noremap = true})
+map('','<leader>t',':bel 7split term://$SHELL <cr>',{noremap = true})
+map('t','<ESC><leader>t','<C-\\><C-n>:q<cr>',{noremap = true})
 
 
 -- vim options
@@ -44,6 +46,8 @@ opt.smarttab = true
 opt.tabstop = 4
 opt.shiftwidth = 4
 
+opt.switchbuf = opt.switchbuf + "useopen"
+
 opt.mouse = 'a'
 
 opt.clipboard = opt.clipboard + "unnamedplus"
@@ -55,14 +59,10 @@ local autocmd = vim.api.nvim_create_autocmd
 autocmd('FileType', {
     pattern = 'cpp',
     callback = function() 
-	    map('n','<F5>',':w <cr> :terminal g++ -o %< % && ./%< <cr>',{noremap = true})
+	    map('n','<F5>',':bel 7split term://{zsh -c \'g++ -o %< % && ./%<\'}<cr>',{noremap = true})
     end
 })
 
-autocmd('FileType', {
-    pattern = 'cpp',
-    command = 'noremap <F5> :!g++ -o %< % <cr><cr> :!./%< <cr>'
-})
 autocmd('TermOpen', {
     command = 'setlocal listchars= nonumber norelativenumber nocursorline'
 })
