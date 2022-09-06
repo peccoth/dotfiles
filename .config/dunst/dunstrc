@@ -1,7 +1,8 @@
 [global]
     title = Dunst
     class = Dunst
-    monitor = 0
+    monitor = 1
+    follow = mouse
     geometry = "350x6-19+52"
     indicate_hidden = yes
     shrink = yes
@@ -39,12 +40,6 @@
     mouse_left_click = close_current
     mouse_middle_click = do_action
     mouse_right_click = close_all
-
-[shortcuts]
-    close = ctrl+space
-    close_all = ctrl+shift+space
-    history = ctrl+Escape
-    context = ctrl+shift+period
 
 [urgency_low]
     timeout = 2

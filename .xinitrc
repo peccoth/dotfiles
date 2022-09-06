@@ -1,8 +1,9 @@
 #!/bin/sh
 userresources=$HOME/.config/X/Xresources
 usermodmap=$HOME/.config/X/Xmodmap
+fcitx5 -d &
 
-setxkbmap pl &
+setxkbmap pl -variant colemak -option ctrl:nocaps
 # merge in defaults and keymaps
 
 if [ -f "$userresources" ]; then
@@ -22,9 +23,12 @@ fi
 mpd &
 /home/kacper/.config/mpd/mpd_notification &
 picom -bc -i 1 &
-feh --bg-fill --no-fehbg "$HOME/.local/wallpapers/$(ls /home/kacper/.local/wallpapers/ | sort -R | tail -1)"
+feh --bg-fill --no-fehbg "$HOME/Pictures/wallpapers/$(ls /home/kacper/Pictures/wallpapers/ | sort -R | tail -1)"
 slstatus &
 udiskie &
 dunst &
-otd &
+xset s 300
+xset dpms 300 600 1200
+xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock &
+# otd &
 exec dwm
