@@ -1,14 +1,21 @@
-require "paq" {
-    "savq/paq-nvim";
-    "ap/vim-css-color";
-    "preservim/nerdtree";
-    "nvim-lualine/lualine.nvim";
-    "nvim-treesitter/nvim-treesitter";
-}
-require('lualine').setup {
+vim.cmd [[packadd packer.nvim]]
+require 'packer'.startup(function(use) 
+    use 'wbthomason/packer.nvim'
+    use 'ap/vim-css-color'
+    use 'preservim/nerdtree'
+    use 'nvim-lualine/lualine.nvim'
+    use 'nvim-treesitter/nvim-treesitter'
+    use 'sainnhe/sonokai'
+    use 'kvrohit/mellow.nvim'
+    use 'folke/tokyonight.nvim'
+    use {'nvim-orgmode/orgmode', config = function() require('orgmode').setup{} end}
+end)
+
+require 'lualine'.setup {
     options = {
         icons_enabled = false,
-        theme = 'gruvbox_dark',
+        -- theme = 'gruvbox_dark',
+        theme = 'mellow',
         -- component_separators = { left = '', right = ''},
          component_separators = { left = '', right = ''},
         -- section_separators = { left = '', right = ''},
@@ -19,13 +26,28 @@ require('lualine').setup {
     }
 }
 
+require 'orgmode'.setup_ts_grammar()
 require 'nvim-treesitter.configs'.setup {
+    ensure_installed = { "c", "cpp", "lua", "python", "bash", "css", "org" },
+    auto_install = true, 
     highlight = {
-        enable = true
-    }
+        enable = true, 
+        additional_vim_regex_highlighting = true,
+    },
+    indent = {
+ 	enable = true,
+    },
 }
+
+require 'orgmode'.setup({ 
+    org_agenda_files = { '~/Notes/*' },
+    org_default_notes_file = { '~/Notes/index.org' },
+})
+
+vim.cmd.colorscheme 'tokyonight-storm';
 -- keymaps
 local map = vim.api.nvim_set_keymap
+vim.g.filetype_fs = 'forth'
 vim.g.mapleader = ' '
 map('','<leader>n',':NERDTreeToggle<cr>',{noremap = true})
 map('','<leader>w','<C-w>w <cr>',{noremap = true})
