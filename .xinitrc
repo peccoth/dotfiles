@@ -23,12 +23,12 @@ fi
 mpd &
 /home/kacper/.config/mpd/mpd_notification &
 picom -bc -i 1 &
-feh --bg-fill --no-fehbg "$HOME/Pictures/wallpapers/$(ls /home/kacper/Pictures/wallpapers/ | sort -R | tail -1)"
+nitrogen --restore
 slstatus &
 udiskie &
 dunst &
-xset s 300
-xset dpms 300 600 1200
+xrandr --output DP2 --mode 1920x1080 --rate 143.98 --left-of LVDS1
+xset s 300 5 &
 xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock &
 # otd &
 exec dwm

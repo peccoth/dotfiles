@@ -5,6 +5,6 @@ do
     if [ ! -f "${path%/*}"/?over.* ]; then
         ffmpeg -i "$path" "${path%/*}/cover.jpg"
     fi
-        notify-send -i "${path%/*}"/?over.* "Now playing: " "$(mpc current)" --hint=string:x-dunst-stack-tag:mpd_notification
+    notify-send -i "${path%/*}"/?over.* "$(mpc status %state% | sed -e "s/\b\(.\)/\u\1/g")" "$(mpc current)" --hint=string:x-dunst-stack-tag:mpd_notification
     mpc idle player > /dev/null
 done

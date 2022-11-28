@@ -24,8 +24,10 @@
 *.color5:       #e02c6d
 *.color13:      #ff5c8f
 ! cyan
-*.color6:       #0aaeb3
-*.color14:      #53fde9
+*.color6: #689d6a
+*.color14: #427b58
+!*.color6:       #0aaeb3
+!*.color14:      #53fde9
 ! white
 *.color7:       #d0bfa1
 *.color15:      #fce8c3
@@ -43,73 +45,3 @@ dwm.selfgcolor:      #fce8c3
 
 dwm.statusfgcolor:   #121212
 dwm.statusbgcolor:   #918175
-!! DWM TERMINAL
-!dwm.foreground:   #fce8c3
-!! dwm.background:   #1c1b19
-!! dwm.background:   #121212
-!dwm.background: #282A36
-!dwm.cursorColor:  #fbb829
-!! black
-!dwm.color0:       #121212
-!dwm.color8:       #918175
-!! red
-!dwm.color1:       #ef2f27
-!dwm.color9:       #f75341
-!! green
-!dwm.color2:       #519f50
-!dwm.color10:      #98bc37
-!! yellow
-!dwm.color3:       #fbb829
-!dwm.color11:      #fed06e
-!! blue
-!dwm.color4:       #2c78bf
-!dwm.color12:      #68a8e4
-!! magenta
-!dwm.color5:       #e02c6d
-!dwm.color13:      #ff5c8f
-!! cyan
-!dwm.color6:       #0aaeb3
-!dwm.color14:      #53fde9
-!! white
-!dwm.color7:       #d0bfa1
-!dwm.color15:      #fce8c3
-
-!! Dracula
-!! special
-!*.foreground: #F8F8F2
-!*.background: #282A36
-!! black
-!*.color0:     #000000
-!*.color8:     #4D4D4D
-!! red
-!*.color1:     #FF5555
-!*.color9:     #FF6E67
-!! green
-!*.color2:     #50FA7B
-!*.color10:    #5AF78E
-!! yellow
-!*.color3:     #F1FA8C
-!*.color11:    #F4F99D
-!! blue
-!*.color4:     #BD93F9
-!*.color12:    #CAA9FA
-!! magenta
-!*.color5:     #FF79C6
-!*.color13:    #FF92D0
-!! cyan
-!*.color6:     #8BE9FD
-!*.color14:    #9AEDFE
-!! white
-!*.color7:     #BFBFBF
-!*.color15:    #E6E6E6
-!! DWM colors
-!dwm.normbgcolor:     #282A36
-!dwm.normbordercolor: #4d4d4d
-!dwm.normfgcolor:     #4d4d4d
-!!
-!dwm.selbgcolor:      #282A36
-!dwm.selbordercolor:  #F8F8F2
-!dwm.selfgcolor:      #F8F8F2
-!!
-!dwm.statusfgcolor:   #282a36
-!dwm.statusbgcolor:   #BD93f9
