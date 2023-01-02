@@ -5,17 +5,20 @@ require 'packer'.startup(function(use)
     use 'preservim/nerdtree'
     use 'nvim-lualine/lualine.nvim'
     use 'nvim-treesitter/nvim-treesitter'
-    use 'sainnhe/sonokai'
-    use 'kvrohit/mellow.nvim'
-    use 'folke/tokyonight.nvim'
+    use 'ms-jpq/coq.nvim'
     use {'nvim-orgmode/orgmode', config = function() require('orgmode').setup{} end}
+    use 'vimwiki/vimwiki'
+    use 'kvrohit/mellow.nvim'
+    use 'catppuccin/nvim'
+    use 'rose-pine/neovim'
+    use 'ellisonleao/gruvbox.nvim'
 end)
 
 require 'lualine'.setup {
     options = {
         icons_enabled = false,
         -- theme = 'gruvbox_dark',
-        theme = 'mellow',
+        theme = 'gruvbox_dark',
         -- component_separators = { left = '', right = ''},
          component_separators = { left = '', right = ''},
         -- section_separators = { left = '', right = ''},
@@ -43,14 +46,33 @@ require 'orgmode'.setup({
     org_agenda_files = { '~/Notes/*' },
     org_default_notes_file = { '~/Notes/index.org' },
 })
-
-vim.cmd.colorscheme 'tokyonight-storm';
+require("gruvbox").setup({
+  undercurl = true,
+  underline = true,
+  bold = true,
+  italic = true,
+  strikethrough = true,
+  invert_selection = false,
+  invert_signs = false,
+  invert_tabline = false,
+  invert_intend_guides = false,
+  inverse = true, -- invert background for search, diffs, statuslines and errors
+  contrast = "", -- can be "hard", "soft" or empty string
+  palette_overrides = {
+    dark0 = "#121212",
+  },
+  overrides = {},
+  dim_inactive = false,
+  transparent_mode = false,
+})
+vim.cmd.colorscheme 'gruvbox';
+-- vim.o.background='light'
 -- keymaps
 local map = vim.api.nvim_set_keymap
 vim.g.filetype_fs = 'forth'
 vim.g.mapleader = ' '
 map('','<leader>n',':NERDTreeToggle<cr>',{noremap = true})
-map('','<leader>w','<C-w>w <cr>',{noremap = true})
+map('','<leader>v','<C-w>w <cr>',{noremap = true})
 map('t','<ESC>','<C-\\><C-n>',{noremap = true})
 map('','<leader>a','ggVG',{noremap = true})
 map('','<leader>t',':bel 7split term://$SHELL <cr>',{noremap = true})
