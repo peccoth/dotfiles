@@ -3,7 +3,6 @@ require 'packer'.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-treesitter/nvim-treesitter-context'
-  use 'preservim/nerdtree'
   use 'ap/vim-css-color'
   use 'nvim-lualine/lualine.nvim'
   use 'ms-jpq/coq.nvim'
@@ -98,12 +97,12 @@ vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "fg" });
 local map = vim.api.nvim_set_keymap
 vim.g.filetype_fs = 'forth'
 vim.g.mapleader = ' '
-map('','<leader>n',':NERDTreeToggle<cr>',{noremap = true})
+map('','<leader>n',':lua netrwVsplitToggle()<cr>',{noremap = true})
 map('','<leader>v','<C-w>w <cr>',{noremap = true})
 map('t','<ESC>','<C-\\><C-n>',{noremap = true})
 map('','<leader>a','ggVG',{noremap = true})
-map('','<leader>t',':bel 7split term://$SHELL <cr>',{noremap = true})
-map('t','<ESC><leader>t','<C-\\><C-n>:q<cr>',{noremap = true})
+map('','<leader>t',':lua termToggle()<cr>',{noremap = true})
+map('t','<ESC><leader>t','<C-\\><C-n>:hide<cr>:lua print("Terminal hidden!")<cr>',{noremap = true})
 map('v','K', ":m '<-2<cr>gv=gv",{})
 map('v','J', ":m '>+1<cr>gv=gv",{})
 
@@ -127,6 +126,35 @@ opt.mouse = 'a'
 opt.clipboard = opt.clipboard + "unnamedplus"
 opt.ignorecase = true
 opt.scrolloff = 10
+vim.g.netrw_liststyle = 3
+
+function netrwVsplitToggle()
+  local netrw_buffers = vim.fn.win_findbuf(vim.fn.bufnr('^NetrwTreeListing$'))
+  if #netrw_buffers > 0 then
+    vim.api.nvim_win_close(netrw_buffers[1],true)
+  else
+    vim.cmd("Vexplore 20")
+  end
+end
+
+function termToggle()
+  local term_buffer = vim.fn.bufnr('^term://')
+  local term_win = vim.fn.bufwinnr(term_buffer)
+  if term_win == -1 then 
+    if term_buffer ~= -1 then
+      vim.cmd(":bel 7split")
+      vim.cmd(":b " .. term_buffer)
+      vim.cmd(":startinsert")
+      print("Terminal restored!")
+    else 
+      vim.cmd(":bel 7split term://$SHELL")
+      print("New terminal created!")
+    end
+  else   
+    vim.cmd(term_win .. "hide")     
+    print("Terminal hidden!")  
+  end
+end
 
 -- autocmd
 local autocmd = vim.api.nvim_create_autocmd
