@@ -1,0 +1,7 @@
+#!/bin/sh
+NAZWA=~/Pictures/Screenshots/$(date +%F_%T.%2N).png
+maim $1 $NAZWA
+if [[ $? == 0 ]]; then 
+    xclip -selection clipboard -t "image/png" $NAZWA
+    notify-send -i $NAZWA "Screenshot saved!" "$NAZWA"
+fi

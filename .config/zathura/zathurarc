@@ -7,7 +7,7 @@ set guioptions ""
 
 # recolor (dark mode)
 map <C-i> recolor
-set recolor "true"
+set recolor "false"
 
 set recolor-reverse-video "true"
 set recolor-keephue "true"

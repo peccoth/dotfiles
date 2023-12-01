@@ -5,13 +5,23 @@ setopt appendhistory
 bindkey -v
 autoload -U compinit promptinit
 compinit && promptinit
+autoload -Uz vcs_info
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-prompt_theme_setup() {
-    PS1="%F{4}[%m]%f %F{2}%~%f %# "
+zstyle ':vcs_info:*' enable git svn
+precmd() {
+    vcs_info
 }
+setopt prompt_subst
+
+prompt_theme_setup() {
+    PS1="${vcs_info_msg_0_}%F{4}[%m]%f %F{2}%~%f %# "
+}
+
+#killall(name) {
+#  kill -9 $(ps -e | grep -i name | cut -f 3 -d " " )
+#}
+
+
 prompt_themes+=( theme )
 prompt theme
 setopt COMPLETE_ALIASES
@@ -24,4 +34,4 @@ alias v=nvim
 alias dotfiles='git --git-dir=$HOME/.local/dotfiles.git --work-tree=$HOME'
 alias feh='feh -.'
 alias top=htop
-
+alias clocks='watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'

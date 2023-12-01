@@ -1,0 +1,11 @@
+#!/bin/sh
+NAZWA=~/Pictures/Screenshots/$(date +%F_%T.%2N).png
+if [[ $1 == "-s" ]]; then
+  slurp | grim -g - $NAZWA
+else
+  grim $NAZWA
+fi
+if [[ $? == 0 ]]; then 
+  xclip -selection clipboard -t "image/png" $NAZWA
+  notify-send -i $NAZWA "Screenshot saved!" "$NAZWA"
+fi
