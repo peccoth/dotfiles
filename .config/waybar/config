@@ -5,18 +5,15 @@
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
+    //"modules-left": [ "hyprland/workspaces"],
+    //"modules-center": [ "hyprland/window" ],
     "modules-left": [ "river/tags"],
     "modules-center": [ "river/window" ],
-    "modules-right": ["clock", "tray"],
+    "modules-right": [ "tray", "clock" ],
 
     "tray": {
         "icon-size": 12,
         "spacing": 5 
-    },
-    "clock": {
-        // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format-alt": "{:%Y-%m-%d}"
     },
     "custom/media": {
         "format": "{icon} {}",
@@ -28,6 +25,11 @@
         },
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
     }
 }
 

@@ -1,9 +1,11 @@
 #!/bin/sh
 userresources=$HOME/.config/X/Xresources
 usermodmap=$HOME/.config/X/Xmodmap
+xrandr --output DisplayPort-1 --mode 1920x1080 --rate 144 &
 fcitx5 -d &
+(sleep 5 && corectrl --minimize-systray) &
 
-setxkbmap pl -variant colemak -option ctrl:nocaps
+setxkbmap pl -variant colemak
 # merge in defaults and keymaps
 
 if [ -f "$userresources" ]; then
@@ -24,11 +26,17 @@ mpd &
 /home/kacper/.config/mpd/mpd_notification &
 picom -bc -i 1 &
 nitrogen --restore
-slstatus &
 udiskie &
 dunst &
-xrandr --output DP2 --mode 1920x1080 --rate 143.98 --left-of LVDS1
-xset s 300 5 &
-xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock &
-# otd &
+joystickwake &
+$(nix path-info --offline nixpkgs#polkit_gnome)/libexec/polkit-gnome-authentication-agent-1 &
+otd-daemon &
+if test -z "$DBUS_SESSION_BUS_ADDRESS"; then
+	eval $(dbus-launch --exit-with-session --sh-syntax)
+fi
+systemctl --user import-environment DISPLAY XAUTHORITY
+
+if command -v dbus-update-activation-environment >/dev/null 2>&1; then
+        dbus-update-activation-environment DISPLAY XAUTHORITY
+fi
 exec dwm

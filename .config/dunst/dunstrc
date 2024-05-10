@@ -3,7 +3,7 @@
     class = Dunst
     monitor = 1
     follow = mouse
-    geometry = "350x6-19+52"
+    geometry = "350x6-19+19"
     indicate_hidden = yes
     shrink = yes
     

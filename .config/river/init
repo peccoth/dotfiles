@@ -1,12 +1,14 @@
 #!/bin/sh
-
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river &
+KDECONNECT_PATH="$(nix-store --query --outputs $(which kdeconnect-app))/libexec/kdeconnectd"
 waybar &
 mako &
 fcitx5 &
+wl-paste --watch cliphist store &
 corectrl --minimize-systray &
-(sleep 3 && birdtray) &
 wbg ~/Pictures/wallpapers/hu\ tao\ 4.jpg &
 wlr-randr --output DP-2 --mode 1920x1080@143.981003Hz &
+$KDECONNECT_PATH &
 
 riverctl keyboard-layout -variant colemak pl
 riverctl map normal Super+Shift Q exit

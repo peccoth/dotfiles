@@ -35,3 +35,5 @@ alias dotfiles='git --git-dir=$HOME/.local/dotfiles.git --work-tree=$HOME'
 alias feh='feh -.'
 alias top=htop
 alias clocks='watch -n.1 "grep \"^[c]pu MHz\" /proc/cpuinfo"'
+alias scan-a4='scanimage --device "fujitsu:ScanSnap S500:23633" --format=tiff --output-file ~/Documents/skany/$(date +%F_%T).tiff --progress --page-width 210mm --page-height 297mm --mode color'
+alias update='nix flake update --flake ~/syf/code/nix --commit-lock-file; sudo nixos-rebuild --flake ~/syf/code/nix switch'

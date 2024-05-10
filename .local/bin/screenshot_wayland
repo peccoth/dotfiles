@@ -6,6 +6,6 @@ else
   grim $NAZWA
 fi
 if [[ $? == 0 ]]; then 
-  xclip -selection clipboard -t "image/png" $NAZWA
+  wl-copy < $NAZWA
   notify-send -i $NAZWA "Screenshot saved!" "$NAZWA"
 fi
