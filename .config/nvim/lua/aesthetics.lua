@@ -22,21 +22,15 @@ require("gruvbox").setup({
   dim_inactive = false,
   transparent_mode = false,
 })
-vim.cmd.colorscheme 'gruvbox';
+require "boo-colorscheme".use ({
+  theme = "forest_stream",
+  italic = true,
+})
+
+if vim.fn.has("termguicolors") then
+  vim.opt.termguicolors = true;
+end
+
 vim.o.background = 'dark';
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "fg" });
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "bg" });
-
-require 'lualine'.setup {
-  options = {
-    icons_enabled = false,
-    theme = 'gruvbox_dark',
-    -- component_separators = { left = '', right = ''},
-    component_separators = { left = '', right = ''},
-    -- section_separators = { left = '', right = ''},
-    section_separators = { left = '', right = ''},
-    disabled_filetypes = {},
-    always_divide_middle = true,
-    globalstatus = false,
-  }
-}

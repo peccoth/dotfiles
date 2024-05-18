@@ -12,14 +12,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require 'lazy'.setup({
-  'wbthomason/packer.nvim',
   'neovim/nvim-lspconfig',
   'nvim-treesitter/nvim-treesitter',
   'nvim-treesitter/nvim-treesitter-context',
   'ap/vim-css-color',
-  'nvim-lualine/lualine.nvim',
   'ms-jpq/coq.nvim',
   {'nvim-orgmode/orgmode', config = function() require('orgmode').setup{} end},
   'vimwiki/vimwiki',
   'ellisonleao/gruvbox.nvim',
+  'rockerBOO/boo-colorscheme-nvim'
 })
